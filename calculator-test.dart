@@ -31,9 +31,21 @@ void main() {
 
     test('throw an exception: "negative numbers not allowed <negative_number>"', () {
       final calculator = Calculator();
-      expect(() => calculator.add("-1"), throwsA(isA<Exception>()));
-      expect(() => calculator.add("1,-2"), throwsA(isA<Exception>()));
-      expect(() => calculator.add("1,-2,-3"), throwsA(isA<Exception>()));
+      expect(() => calculator.add("-1"), 
+        throwsA(isA<Exception>().having(
+          (e) => e.toString(), 
+          'message', 
+          contains('negative numbers not allowed -1'))));
+      expect(() => calculator.add("1,-2"), 
+        throwsA(isA<Exception>().having(
+          (e) => e.toString(), 
+          'message', 
+          contains('negative numbers not allowed -2,-3'))));
+      expect(() => calculator.add("1,-2,-3"), 
+        throwsA(isA<Exception>().having(
+          (e) => e.toString(), 
+          'message', 
+          contains('negative numbers not allowed -2,-3'))));
     });
 
   });
