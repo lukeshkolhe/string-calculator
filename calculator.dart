@@ -26,10 +26,16 @@ class Calculator {
     }
 
     // check for negative numbers
+    final List<int> negativeNumbers = [];
     for (int number in numberList) {
       if (number < 0) {
-        throw Exception('negative numbers not allowed $number');
+        negativeNumbers.add(number);
       }
+    }
+
+    // throw an exception if there are negative numbers
+    if (negativeNumbers.isNotEmpty) {
+      throw Exception('negative numbers not allowed ${negativeNumbers.join(',')}');
     }
 
 
