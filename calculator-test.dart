@@ -29,5 +29,12 @@ void main() {
       expect(calculator.add("//;\n1;2"), equals(3));
     });
 
+    test('throw an exception: "negative numbers not allowed <negative_number>"', () {
+      final calculator = Calculator();
+      expect(() => calculator.add("-1"), throwsA(isA<Exception>()));
+      expect(() => calculator.add("1,-2"), throwsA(isA<Exception>()));
+      expect(() => calculator.add("1,-2,-3"), throwsA(isA<Exception>()));
+    });
+
   });
 }
