@@ -5,8 +5,20 @@ class Calculator {
       return 0;
     }
     
-    // split the string by commas and parse numbers
-    List<int> numberList = numbers.split(',').map(int.parse).toList();
+    final List<int> numberList = [];
+    // split the string by commas
+    final List<String> numberSeperatedByComma = numbers.split(',');
+
+    for (String string in numberSeperatedByComma) {
+
+    // split the string by new line
+      final List<String> numberSeperatedByNewLine = string.split('\n');
+
+      // add the final numbers to the number list
+      for (String number in numberSeperatedByNewLine) { 
+        numberList.add(int.parse(number));
+      }
+    }
 
     int sum = 0;
 
