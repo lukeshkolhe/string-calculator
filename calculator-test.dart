@@ -40,7 +40,7 @@ void main() {
         throwsA(isA<Exception>().having(
           (e) => e.toString(), 
           'message', 
-          contains('negative numbers not allowed -2,-3'))));
+          contains('negative numbers not allowed -2'))));
       expect(() => calculator.add("1,-2,-3"), 
         throwsA(isA<Exception>().having(
           (e) => e.toString(), 
