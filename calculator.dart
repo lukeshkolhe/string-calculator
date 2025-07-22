@@ -1,11 +1,14 @@
 class Calculator {
   int add(String numbers) {
     
-    List<String> numberList = numbers.split(',');
+    // split the string by commas and parse numbers
+    List<int> numberList = numbers.split(',').map(int.parse).toList();
+
     int sum = 0;
-    
-    for (String number in numberList) {
-      sum += int.parse(number);
+
+    // add the numbers to the sum
+    for (int number in numberList) {
+      sum += number;
     }
     
     return sum;
