@@ -19,5 +19,10 @@ void main() {
       expect(calculator.add("5"), equals(5));
     });
 
+    test('handle new lines between numbers (instead of commas)', () {
+      final calculator = Calculator();
+      expect(calculator.add("1\n2,3"), equals(6));
+    });
+
   });
 }
