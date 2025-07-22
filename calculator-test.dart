@@ -24,5 +24,10 @@ void main() {
       expect(calculator.add("1\n2,3"), equals(6));
     });
 
+    test('handle different delimiters', () {
+      final calculator = Calculator();
+      expect(calculator.add("//;\n1;2"), equals(3));
+    });
+
   });
 }
