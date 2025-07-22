@@ -13,5 +13,11 @@ void main() {
       final calculator = Calculator();
       expect(calculator.add(""), equals(0));
     });
+
+    test('single number returns the number itself', () {
+      final calculator = Calculator();
+      expect(calculator.add("5"), equals(5));
+    });
+
   });
 }
