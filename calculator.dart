@@ -6,7 +6,7 @@ class Calculator {
     }
     
     // split the string by commas and new lines using regexand parse numbers
-    List<int> numberList = numbers.split(RegExp(r',|\n')).map(int.parse).toList();
+    List<int> numberList = numbers.split(RegExp(r'[,\n]')).map(int.parse).toList();
 
     int sum = 0;
 
