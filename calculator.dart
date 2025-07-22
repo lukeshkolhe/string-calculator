@@ -25,6 +25,14 @@ class Calculator {
       numberList = numbers.split(RegExp(r'[,\n]')).map(int.parse).toList();
     }
 
+    // check for negative numbers
+    for (int number in numberList) {
+      if (number < 0) {
+        throw Exception('negative numbers not allowed $number');
+      }
+    }
+
+
     int sum = 0;
 
     // add the numbers to the sum
