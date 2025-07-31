@@ -29,6 +29,20 @@ void main() {
       expect(calculator.add("//;\n1;2"), equals(3));
     });
 
+    test('handle different delimiters', () {
+      final calculator = Calculator();
+      expect(calculator.add("//-\n1-2"), equals(3));
+    });
+
+    test('throw an exception: "negative numbers not allowed for delimeter "-"' , () {
+      final calculator = Calculator();
+      expect(() => calculator.add("//-\n1--2"),
+          throwsA(isA<Exception>().having(
+                  (e) => e.toString(),
+              'message',
+              contains('negative numbers not allowed -2'))));
+    });
+
     test('throw an exception: "negative numbers not allowed <negative_number>"', () {
       final calculator = Calculator();
       expect(() => calculator.add("-1"), 
