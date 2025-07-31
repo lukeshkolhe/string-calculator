@@ -20,7 +20,7 @@ class Calculator {
     // split the string by commas and new lines or the delimiter using regex and parse numbers
     List<int> numberList;
     if (delimiter != null) {
-      numberList = numbers.split(RegExp('[,\\n${RegExp.escape(delimiter)}]')).map(int.parse).toList();
+      numberList = extractNumbers(numbers, delimiter!);
     } else {
       numberList = numbers.split(RegExp(r'[,\n]')).map(int.parse).toList();
     }
@@ -48,4 +48,32 @@ class Calculator {
     
     return sum;
   }
+
+  List<int> extractNumbers(String string, String delimiter) {
+    // final stringNumberList = string.split(RegExp('[,\\n${RegExp.escape(delimiter)}]'));
+    // final numberList = stringNumberList.map(int.parse).toList();
+    String leftOver = string;
+    final List<int> numberList = [];
+    String currentString = '';
+    while(leftOver.isNotEmpty) {
+      if(leftOver.substring(0,1) == delimiter) {
+        if(delimiter == '-' && currentString.isEmpty) {
+          currentString = '-';
+        } else {
+          numberList.add(int.parse(currentString));
+          currentString = '';
+        }
+      } else {
+        currentString += leftOver.substring(0,1);
+      }
+      leftOver = leftOver.substring(1);
+      print('curr: $currentString, leftOver: $leftOver');
+    }
+    if(currentString.isNotEmpty) {
+      numberList.add(int.parse(currentString));
+    }
+    print('numberList: $numberList');
+    return numberList;
+  }
+
 }
